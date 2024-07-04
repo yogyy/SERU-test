@@ -6,8 +6,8 @@ declare module "@fastify/jwt" {
     payload: JWTPayload;
     user: {
       sub: string;
-      email: string;
       name: string;
+      is_admin: boolean;
       iat: number;
       exp: number;
     };
