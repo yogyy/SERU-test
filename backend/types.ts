@@ -4,17 +4,17 @@ import { JWT } from "@fastify/jwt";
 export type Timestamp = ColumnType<Date, Date | string, Date | string>;
 
 export interface Pricelist {
-  id: Generated<number>;
+  id: number;
   price: string;
   code: string;
-  model_id: Generated<number>;
-  year_id: Generated<number>;
+  model_id: number;
+  year_id: number;
   created_at: Generated<Timestamp>;
   updated_at: Generated<Timestamp>;
 }
 
 export interface Users {
-  id: Generated<number>;
+  id: number;
   name: string;
   is_admin: boolean;
   created_at: Generated<Timestamp>;
@@ -22,14 +22,14 @@ export interface Users {
 }
 
 export interface VehicleBrand {
-  id: Generated<number>;
+  id: number;
   name: string;
   created_at: Generated<Timestamp>;
   updated_at: Generated<Timestamp>;
 }
 
 export interface VehicleModel {
-  id: Generated<number>;
+  id: number;
   name: string;
   type_id: number;
   created_at: Generated<Timestamp>;
@@ -37,15 +37,15 @@ export interface VehicleModel {
 }
 
 export interface VehicleType {
-  brand_id: Generated<number | null>;
-  id: Generated<number>;
+  id: number;
   name: string;
+  brand_id: number | null;
   created_at: Generated<Timestamp>;
   updated_at: Generated<Timestamp>;
 }
 
 export interface VehicleYear {
-  id: Generated<number>;
+  id: number;
   year: number;
   created_at: Generated<Timestamp>;
   updated_at: Generated<Timestamp>;
