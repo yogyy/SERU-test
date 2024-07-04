@@ -1,10 +1,13 @@
-import type { ColumnType, Generated } from "kysely";
+import type { ColumnType } from "kysely";
 import { JWT } from "@fastify/jwt";
 
 export type Timestamp = ColumnType<Date, Date | string, Date | string>;
+export type Generated<T> = T extends ColumnType<infer S, infer I, infer U>
+  ? ColumnType<S, I | undefined, U>
+  : ColumnType<T, T | undefined, T>;
 
 export interface Pricelist {
-  id: number;
+  id: Generated<number>;
   price: string;
   code: string;
   model_id: number;
@@ -22,14 +25,14 @@ export interface Users {
 }
 
 export interface VehicleBrand {
-  id: number;
+  id: Generated<number>;
   name: string;
   created_at: Generated<Timestamp>;
   updated_at: Generated<Timestamp>;
 }
 
 export interface VehicleModel {
-  id: number;
+  id: Generated<number>;
   name: string;
   type_id: number;
   created_at: Generated<Timestamp>;
@@ -37,7 +40,7 @@ export interface VehicleModel {
 }
 
 export interface VehicleType {
-  id: number;
+  id: Generated<number>;
   name: string;
   brand_id: number | null;
   created_at: Generated<Timestamp>;
@@ -45,7 +48,7 @@ export interface VehicleType {
 }
 
 export interface VehicleYear {
-  id: number;
+  id: Generated<number>;
   year: number;
   created_at: Generated<Timestamp>;
   updated_at: Generated<Timestamp>;
@@ -61,7 +64,7 @@ export interface DB {
 }
 
 export interface JWTPayload {
-  sub: number | null;
+  sub: ColumnType<number, number | undefined, number> | number | null;
   name: string;
   is_admin: boolean;
 }
