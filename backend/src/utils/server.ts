@@ -9,11 +9,8 @@ export default async function buildServer() {
   });
 
   app.register(import("@/plugins/auth"));
-  app
-    .register(import("@/routes/root"), { prefix: "/api" })
-    .register(import("@/routes/auth.routes"), { prefix: "/api/auth" })
-    .register(import("@/routes/user.routes"), { prefix: "/api/user" })
-    .register(import("@/routes/book.routes"), { prefix: "/api/book" });
+  app.register(import("@/routes/auth.routes"), { prefix: "/api/auth" });
+  app.register(import("@/routes/vehicle"), { prefix: "/api" });
 
   return app;
 }
