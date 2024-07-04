@@ -1,0 +1,249 @@
+{
+	"info": {
+		"_postman_id": "90437175-9541-4478-aef9-05efa799aa40",
+		"name": "seru test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25560616"
+	},
+	"item": [
+		{
+			"name": "login route",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\" :\"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all vehicle type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJhZG1pbiIsImlzX2FkbWluIjp0cnVlLCJpYXQiOjE3MjAxMDAxODksImV4cCI6MTcyMDE4NjU4OX0.LhL7fv7XUl8p2lTi63hwR9JUWxD8p_6Hn5SDk3UnxI0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/vehicles?page=1&per_page=5&sort_by=id.asc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"vehicles"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"description": "optional, default to 1"
+						},
+						{
+							"key": "per_page",
+							"value": "5",
+							"description": "optional, default to 5"
+						},
+						{
+							"key": "sort_by",
+							"value": "id.asc",
+							"description": "optional, can be \"id.asc\" | \"id.desc\" | \"name.asc\" | \"name.desc\", default to \"id.asc\""
+						}
+					]
+				},
+				"description": "get all vehicle_type using pagination"
+			},
+			"response": []
+		},
+		{
+			"name": "get vehicle type by brand_id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsIm5hbWUiOiJ5b2d5eSIsImlzX2FkbWluIjpmYWxzZSwiaWF0IjoxNzIwMTAwMTgwLCJleHAiOjE3MjAxODY1ODB9.6SAKlUl2fPoPd3Thd0y83lPP2mvGqGLLGqonBPSSm4k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/vehicle-types?brand_id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"vehicle-types"
+					],
+					"query": [
+						{
+							"key": "brand_id",
+							"value": "1",
+							"description": "required"
+						}
+					]
+				},
+				"description": "get vehicle_type by brand_id"
+			},
+			"response": []
+		},
+		{
+			"name": "add new vehicle type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJhZG1pbiIsImlzX2FkbWluIjp0cnVlLCJpYXQiOjE3MjAxMDAxODksImV4cCI6MTcyMDE4NjU4OX0.LhL7fv7XUl8p2lTi63hwR9JUWxD8p_6Hn5SDk3UnxI0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\" : \"Sentra\",\r\n  \"brand_id\" : \"5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/vehicle-type",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"vehicle-type"
+					]
+				},
+				"description": "add new vehicle_type\n\nname : required\n\nbrand_id: optional\n\nrequire admin"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/vehicle/edit-type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJhZG1pbiIsImlzX2FkbWluIjp0cnVlLCJpYXQiOjE3MjAxMDAxODksImV4cCI6MTcyMDE4NjU4OX0.LhL7fv7XUl8p2lTi63hwR9JUWxD8p_6Hn5SDk3UnxI0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"7\",\r\n  \"name\": \"Tahoe\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/vehicle-type",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"vehicle-type"
+					]
+				},
+				"description": "edit vehicle_type  \nname : required  \nbrand_id : optional\n\nrequire admin"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/vehicle-type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJhZG1pbiIsImlzX2FkbWluIjp0cnVlLCJpYXQiOjE3MjAxMDAxODksImV4cCI6MTcyMDE4NjU4OX0.LhL7fv7XUl8p2lTi63hwR9JUWxD8p_6Hn5SDk3UnxI0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 8\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/vehicle-type",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"vehicle-type"
+					]
+				},
+				"description": "delete vehicle_type  \nrequire admin"
+			},
+			"response": []
+		}
+	]
+}
