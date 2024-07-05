@@ -17,7 +17,7 @@ import { FastifyPluginAsyncTypebox } from "@fastify/type-provider-typebox";
 const vehicleRoutes: FastifyPluginAsyncTypebox = async function (app, _) {
   app.get(
     "/vehicles",
-    { schema: { querystring: Vehicles } },
+    { onRequest: [app.auth], schema: { querystring: Vehicles } },
     getVehiclesHandler
   );
   app.get(
