@@ -12,12 +12,13 @@ Before starting the project, ensure you have the following installed on your mac
 #### 1. Clone the Repository
 
 ```sh
-git clone https://github.com/yogyy/fastky.git
+git clone https://github.com/yogyy/SERU-test
 ```
 
 #### 2. Install Dependencies
 
 ```sh
+cd backend
 pnpm install
 ```
 
